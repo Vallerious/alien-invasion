@@ -12,6 +12,7 @@ class ShipTestCase(unittest.TestCase):
     """ Tests the Ship class of Alien Invaders game """
 
     def setUp(self):
+        # Happens before every test
         self.image = pygame.image.load('img/ship.bmp')
         self.ship = Ship(0, 0, self.image)
 
@@ -47,5 +48,20 @@ class ShipTestCase(unittest.TestCase):
     def test_is_in_bounds_right_fail(self):
         self.assertFalse(self.ship.is_in_bounds(-4, -1))
 
+    def test_die_a_little(self):
+        live_status = self.ship.get_electro_cardio_graphy()
+
+        self.ship.die_a_little()
+
+        self.assertEqual(self.ship.get_electro_cardio_graphy(), live_status - 1)
+
+    def test_is_dead(self):
+        self.assertEqual(self.ship.get_electro_cardio_graphy(), 3)
+
+        self.ship.die_a_little()
+        self.ship.die_a_little()
+        self.ship.die_a_little()
+
+        self.assertTrue(self.ship.is_dead())
 
 unittest.main()

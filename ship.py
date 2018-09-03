@@ -1,20 +1,16 @@
-class Ship:
+from space_object import SpaceObject
+
+
+class Ship(SpaceObject):
     """ This class represents a ship """
 
     def __init__(self, x, y, image):
-        self.image = image
-        self.rect = self.image.get_rect()
-
-        self.rect.centerx = x
-        self.rect.bottom = y
+        super(Ship, self).__init__(x, y, image)
 
         self.__movement_step = 5
         self.__move_right = False
         self.__move_left = False
-
-    def draw(self, screen):
-        """ Draw the ship at its current location """
-        screen.blit(self.image, self.rect)
+        self.__lives = 3
 
     def move_right(self):
         """ Move to the right of the screen based on the movement step """
@@ -60,4 +56,11 @@ class Ship:
     def get_movement_step(self):
         return self.__movement_step
 
+    def die_a_little(self):
+        self.__lives = self.__lives - 1
 
+    def get_electro_cardio_graphy(self):
+        return self.__lives
+
+    def is_dead(self):
+        return self.__lives == 0

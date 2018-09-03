@@ -33,3 +33,6 @@ class Bullets:
         for bullet in self.__bullets.copy():
             if bullet.rect.y < 0:
                 self.__bullets.remove(bullet)
+
+    def empty(self):
+        self.__bullets.empty()
