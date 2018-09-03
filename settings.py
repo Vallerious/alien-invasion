@@ -13,6 +13,7 @@ class Settings:
                 background_color=(230, 230, 230),
                 screen_dim=(1200, 800),
                 caption='Alien Invasion',
+                total_lives=3
             )
 
     def __getattr__(self, name):

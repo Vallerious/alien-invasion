@@ -39,4 +39,13 @@ class BulletsTestCase(unittest.TestCase):
 
         self.assertEqual(len(bullets.get_bullets()), 0)
 
+    def test_empty_bullets(self):
+        bullets = Bullets()
+        bullets.add(Bullet(1, 1))
+
+        bullets.empty()
+
+        self.assertEqual(len(bullets.get_bullets()), 0)
+
+
 unittest.main()
